@@ -38,26 +38,3 @@
 </body>
 </html>
 
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="ko" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>게시글 목록</title>-->
-<!--    <meta name="_csrf" th:content="${_csrf.token}">-->
-<!--    <meta name="_csrf_header" th:content="${_csrf.headerName}">-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>게시글 목록</h1>-->
-<!--<p><a href="/articles/new">새 글</a></p>-->
-
-<!--<div th:if="${#lists.isEmpty(articles)}">아직 글이 없습니다.</div>-->
-<!--<ul th:unless="${#lists.isEmpty(articles)}">-->
-<!--    <li th:each="a : ${articles}">-->
-<!--        <a th:href="@{'/articles/' + ${a.id}}" th:text="${a.title}">제목</a>-->
-<!--    </li>-->
-<!--</ul>-->
-<!--<p><a href="/login">로그인</a></p>-->
-<!--</body>-->
-<!--</html>-->
