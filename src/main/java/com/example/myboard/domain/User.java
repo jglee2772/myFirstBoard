@@ -22,11 +22,15 @@ public class User {
     @Column(nullable=false, length=20)
     private String role; // "USER" or "ADMIN"
 
+    @Column(nullable=false)
+    private boolean approved = false; // 승인 상태 (기본값: false)
+
     private User(String email, String name) {
         this.email = email;
         this.name = name;
         this.password = ""; // OAuth 가입자는 비번 공란 가능
         this.role = "USER";
+        this.approved = false;
     }
 
     public static User create(String email, String name) {
@@ -35,5 +39,13 @@ public class User {
     
     public boolean isAdmin() {
         return "ADMIN".equals(this.role);
+    }
+    
+    public boolean isApproved() {
+        return this.approved;
+    }
+    
+    public void approve() {
+        this.approved = true;
     }
 }

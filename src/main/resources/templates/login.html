@@ -22,6 +22,24 @@
     <div class="card login-card">
         <h1>🔐 시스템 접속</h1>
         
+        <!-- 성공 메시지 -->
+        <div th:if="${param.message == 'success'}" class="success-message" style="background: rgba(0, 255, 0, 0.1); border: 1px solid var(--neon-green); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center; font-weight: 600;">
+            <span style="color: var(--neon-green);">✅ </span>
+            <span style="color: var(--neon-green);">회원가입이 완료되었습니다!</span>
+        </div>
+        
+        <!-- 승인 대기 메시지 -->
+        <div th:if="${param.message == 'pending'}" class="pending-message" style="background: rgba(0, 123, 255, 0.1); border: 1px solid var(--neon-blue); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center; font-weight: 600;">
+            <span style="color: var(--neon-blue);">⏳ </span>
+            <span style="color: var(--neon-blue);">회원가입이 완료되었습니다! 관리자 승인을 기다려주세요.</span>
+        </div>
+        
+        <!-- 에러 메시지 -->
+        <div th:if="${param.error}" class="error-message" style="background: rgba(255, 0, 64, 0.1); border: 1px solid var(--neon-pink); border-radius: 8px; padding: 1rem; margin-bottom: 1rem; text-align: center; font-weight: 600;">
+            <span style="color: var(--neon-pink);">⚠️ </span>
+            <span style="color: var(--neon-pink);">로그인에 실패했습니다. 이메일과 비밀번호를 확인해주세요.</span>
+        </div>
+        
         <form method="post" action="/login" class="login-form">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             
@@ -59,6 +77,20 @@
         </div>
     </div>
 </main>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // URL 파라미터에서 message 확인
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    
+    if (message === 'success') {
+        alert('🎉 회원가입이 완료되었습니다!\n\n이제 로그인하여 서비스를 이용하세요.');
+    } else if (message === 'pending') {
+        alert('⏳ 회원가입이 완료되었습니다!\n\n관리자 승인을 기다려주세요.\n승인 완료 후 로그인이 가능합니다.');
+    }
+});
+</script>
 
 
 </body>

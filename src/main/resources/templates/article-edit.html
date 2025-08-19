@@ -20,13 +20,13 @@
                 <a href="/join" class="btn">회원가입</a>
             </span>
             <span sec:authorize="isAuthenticated()">
-                <span style="color: var(--neon-green);">
+                <span style="color: var(--neon-green); margin-right: 1rem;">
                     안녕하세요, <strong th:text="${displayName != null ? displayName : '사용자'}"></strong>님!
                     <span th:if="${isAdmin}" style="color: var(--neon-pink); margin-left: 0.5rem;">👑 관리자</span>
                 </span>
                 <form method="post" action="/logout" style="display:inline;">
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                    <button type="submit" class="btn btn-danger">로그아웃</button>
+                    <button type="submit" class="btn" style="background: linear-gradient(45deg, var(--neon-pink), #ff0040); padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 600; letter-spacing: 0.5px; min-width: 120px;">로그아웃</button>
                 </form>
             </span>
         </div>
@@ -65,6 +65,7 @@
 </main>
 
 <script src="/js/article.js" defer></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
 </body>
 </html>
 

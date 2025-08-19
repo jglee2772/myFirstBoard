@@ -24,13 +24,19 @@ public class AuthViewController {
     }
 
     @PostMapping("/join")
-    public String join(JoinRequest joinRequest, BindingResult bindingResult) {
+    public String join(@Valid JoinRequest joinRequest, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "join";
         }
 
-        userService.join(joinRequest);
-        return "redirect:/login";
+        try {
+            userService.join(joinRequest);
+            return "redirect:/login?message=pending";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            model.addAttribute("joinRequest", joinRequest);
+            return "join";
+        }
     }
     
     // 관리자 계정 생성 (배포 후 한 번만 실행)
