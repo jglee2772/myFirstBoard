@@ -20,7 +20,7 @@ public class User {
     private String name;
 
     @Column(nullable=false, length=20)
-    private String role; // "USER"
+    private String role; // "USER" or "ADMIN"
 
     private User(String email, String name) {
         this.email = email;
@@ -31,5 +31,9 @@ public class User {
 
     public static User create(String email, String name) {
         return new User(email, name);
+    }
+    
+    public boolean isAdmin() {
+        return "ADMIN".equals(this.role);
     }
 }

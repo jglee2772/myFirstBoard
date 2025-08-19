@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 public class AuthViewController {
     private final UserService userService;
 
-    @GetMapping("/login") public String login(){ return "login"; }
+    @GetMapping("/login") public String loginForm() {
+        return "login";
+    }
 
     @GetMapping("/join")
     public String joinForm(Model model){
@@ -22,14 +24,23 @@ public class AuthViewController {
     }
 
     @PostMapping("/join")
-    public String join(@Valid @ModelAttribute JoinRequest joinRequest, BindingResult br, Model model){
-        if (br.hasErrors()) return "join";
-        try {
-            userService.join(joinRequest);
-        } catch (IllegalArgumentException e){
-            model.addAttribute("error", e.getMessage());
+    public String join(JoinRequest joinRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "join";
         }
+
+        userService.join(joinRequest);
         return "redirect:/login";
+    }
+    
+    // 관리자 계정 생성 (배포 후 한 번만 실행)
+    @GetMapping("/create-admin")
+    public String createAdmin() {
+        try {
+            userService.createAdminAccount();
+            return "redirect:/login?message=Admin account created successfully";
+        } catch (Exception e) {
+            return "redirect:/login?error=Failed to create admin account";
+        }
     }
 }

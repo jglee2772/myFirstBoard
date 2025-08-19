@@ -15,10 +15,31 @@ public class CurrentUserAdvice {
     @ModelAttribute("displayName")
     public String displayName(Authentication auth) {
         if (auth == null) return null;
-        String email = auth.getName();
-        return userRepository.findByEmail(email)
-                .map(User::getName)
-                .filter(n -> !n.isBlank())
-                .orElse(email); //
+        
+        try {
+            String email = auth.getName();
+            return userRepository.findByEmail(email)
+                    .map(User::getName)
+                    .filter(name -> name != null && !name.isBlank())
+                    .orElse(email.split("@")[0]); // 이메일에서 @ 앞부분 사용
+        } catch (Exception e) {
+            // 예외 발생 시 이메일에서 @ 앞부분만 사용
+            String email = auth.getName();
+            return email.split("@")[0];
+        }
+    }
+    
+    @ModelAttribute("isAdmin")
+    public Boolean isAdmin(Authentication auth) {
+        if (auth == null) return false;
+        
+        try {
+            String email = auth.getName();
+            return userRepository.findByEmail(email)
+                    .map(User::isAdmin)
+                    .orElse(false);
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

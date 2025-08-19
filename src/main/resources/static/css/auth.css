@@ -1,0 +1,78 @@
+/* 인증 페이지 스타일 */
+
+/* 로그인/회원가입 카드 */
+.login-card, .join-card {
+    max-width: 400px;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+.login-form, .join-form {
+    margin-bottom: 2rem;
+}
+
+.form-actions {
+    margin-top: 2rem;
+}
+
+/* OAuth 섹션 */
+.oauth-section {
+    margin: 2rem 0;
+}
+
+.divider {
+    position: relative;
+    text-align: center;
+    margin: 2rem 0;
+    color: var(--text-secondary);
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+}
+
+.divider span {
+    background: var(--dark-bg);
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.oauth-btn {
+    background: linear-gradient(45deg, #4285f4, #34a853);
+    width: 100%;
+}
+
+.oauth-btn:hover {
+    background: linear-gradient(45deg, #34a853, #4285f4);
+}
+
+/* 링크 */
+.signup-link, .login-link {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--neon-blue);
+}
+
+.signup-link a, .login-link a {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover, .login-link a:hover {
+    text-shadow: var(--glow-green);
+}
+
+/* 에러 메시지 */
+.error-message {
+    color: var(--neon-pink);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    text-shadow: var(--glow-pink);
+}

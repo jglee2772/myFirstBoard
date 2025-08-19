@@ -39,7 +39,7 @@ public class SecurityConfig {
 // → 폼 로그인 설정. 컨트롤러에서 직접 처리 안 해도 Spring Security가 인증 처리
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/articles")
+                        .logoutSuccessUrl("/")
                 )
 
                 .oauth2Login(oauth -> oauth

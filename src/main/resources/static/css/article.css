@@ -1,0 +1,173 @@
+/* 게시판 스타일 */
+
+/* 게시글 그리드 */
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.article-item {
+    transition: all 0.3s ease;
+    border: 1px solid var(--neon-blue);
+}
+
+.article-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-green);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+}
+
+.article-item h3 a {
+    color: var(--neon-blue);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.article-item h3 a:hover {
+    color: var(--neon-green);
+    text-shadow: var(--glow-green);
+}
+
+/* 게시글 작성 폼 */
+.article-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-form .form-group {
+    margin-bottom: 2rem;
+}
+
+.article-form .form-group label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--neon-green);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.article-form .form-control {
+    width: 100%;
+    padding: 1.2rem;
+    background: rgba(10, 10, 10, 0.8);
+    border: 2px solid var(--neon-blue);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: 'Rajdhani', sans-serif;
+    transition: all 0.3s ease;
+    resize: vertical;
+}
+
+.article-form .form-control:focus {
+    outline: none;
+    border-color: var(--neon-green);
+    box-shadow: var(--glow-green);
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.article-form .form-control::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.article-form textarea.form-control {
+    min-height: 300px;
+    line-height: 1.6;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--neon-blue);
+}
+
+.form-actions .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    min-width: 150px;
+}
+
+/* 게시글 상세 */
+.article-header {
+    border-bottom: 2px solid var(--neon-blue);
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.article-meta {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.article-content {
+    background: rgba(10, 10, 10, 0.5);
+    border: 1px solid var(--neon-blue);
+    border-radius: 10px;
+    padding: 2rem;
+    margin: 2rem 0;
+    backdrop-filter: blur(10px);
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.article-actions {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    justify-content: center;
+}
+
+.article-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--neon-blue);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .article-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .article-content {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .article-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .article-form .form-control {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .article-form textarea.form-control {
+        min-height: 250px;
+    }
+}
