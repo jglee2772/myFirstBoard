@@ -19,7 +19,11 @@ public class MyboardApplication {
 		return args -> {
 			try {
 				userService.createAdminAccount();
+				System.out.println("✅ 관리자 계정이 성공적으로 생성되었습니다!");
+				System.out.println("📧 이메일: admin@cyberboard.com");
+				System.out.println("�� 비밀번호: admin123");
 			} catch (Exception e) {
+				System.out.println("ℹ️ 관리자 계정이 이미 존재합니다: " + e.getMessage());
 				// 관리자 계정이 이미 존재하는 경우 무시
 			}
 		};
