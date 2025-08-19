@@ -39,14 +39,14 @@ public class AuthViewController {
         }
     }
     
-    // 관리자 계정 생성 (배포 후 한 번만 실행)
+    // 관리자 계정 생성 (배포 환경에서 사용)
     @GetMapping("/create-admin")
     public String createAdmin() {
         try {
             userService.createAdminAccount();
             return "redirect:/login?message=Admin account created successfully";
         } catch (Exception e) {
-            return "redirect:/login?error=Failed to create admin account";
+            return "redirect:/login?error=Failed to create admin account: " + e.getMessage();
         }
     }
 }

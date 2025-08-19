@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ CYBER_BOARD - 오류</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/" class="brand glow">⚡ CYBER_BOARD ⚡</a>
+        <div class="nav-links">
+            <a href="/articles" class="btn">게시판</a>
+            <a href="/login" class="btn">로그인</a>
+            <a href="/join" class="btn">회원가입</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="card" style="max-width: 600px; margin: 4rem auto; text-align: center;">
+        <h1 style="color: var(--neon-pink); margin-bottom: 2rem;">⚠️ 오류 발생</h1>
+        
+        <div class="error-content" style="margin-bottom: 2rem;">
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1rem;">
+                <span th:text="${errorMessage}">페이지를 찾을 수 없거나 오류가 발생했습니다.</span>
+            </p>
+            <p style="color: var(--text-secondary);">
+                잠시 후 다시 시도해주세요.
+            </p>
+        </div>
+        
+        <div class="error-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/" class="btn">🏠 홈으로</a>
+            <a href="/articles" class="btn">📋 게시판</a>
+            <a href="/login" class="btn">🔐 로그인</a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

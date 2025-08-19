@@ -23,7 +23,7 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/", "/articles", "/articles/", "/login", "/join", "/css/", "/js/").permitAll()
+                                .requestMatchers("/", "/articles", "/articles/", "/login", "/join", "/css/", "/js/", "/create-admin").permitAll()
 // → 위 경로들은 누구나 접근 가능(비로그인 허용)
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
 // → /admin/** 요청은 ADMIN 역할 필요
